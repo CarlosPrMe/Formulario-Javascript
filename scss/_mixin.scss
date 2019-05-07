@@ -1,0 +1,17 @@
+@mixin button{
+    display: inline-block;
+    border: 0;
+    border-radius: 3px;
+    outline: none;
+    font-weight: 700;
+    font-size: 1rem;
+    height: 40px;
+    color: $grey-dark;
+    background-color: $grey-ligth;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover{
+        background-color: $grey;
+    }
+}
+

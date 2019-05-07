@@ -1,0 +1,272 @@
+@import "reset";
+@import "mixin";
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:300,700");
+@import "variables";
+
+/*-------------------
+GLOBAL
+-----------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "Roboto Slab", sans-serif, serif;
+  font-size: $font-size-normal;
+  color: $grey-dark;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 70px 20px 50px 20px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    padding: 70px 10px;
+  }
+}
+
+/*------------------------
+BOTONES
+------------------------*/
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  outline: none;
+}
+
+.btn {
+  @include button;
+}
+
+.btn--success {
+  @include button;
+  background-color: $green;
+  color: $white;
+  &:hover {
+    background-color: $green-dark;
+  }
+}
+
+@media (max-width: 767px) {
+  .btn {
+    width: 134px;
+  }
+}
+
+.btn--sm {
+  @include button;
+  width: 76px;
+  font-size: $font-size-sm;
+}
+
+/*------------------------
+FORMULARIO
+------------------*/
+.form__control,
+.form__label {
+  display: block;
+}
+.form__label {
+  padding: 5px 0;
+}
+
+.form__control {
+  margin-bottom: 10px;
+  padding-left: 5px;
+  height: 40px;
+  border: 1px solid $grey-ligth;
+  border-radius: 3px;
+  width: 100%;
+  font-size: $font-size-normal;
+}
+
+@media (max-width: 767px) {
+}
+
+@media (min-width: 768px) {
+  .form {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(12, 44px);
+    grid-template-rows: repeat(4, 65px);
+  }
+
+  .form-group:nth-of-type(odd) {
+    grid-column: 2 / span 5;
+  }
+  .form-group:nth-of-type(even) {
+    grid-column: 7 / span 5;
+  }
+  .form-group:nth-of-type(5) {
+    grid-column: 2 / span 3;
+  }
+  .form-group:nth-of-type(6) {
+    grid-column: 5 / span 7;
+  }
+
+  .buttons {
+    grid-column-start: 2;
+  }
+  .btn {
+    width: 120px;
+  }
+
+  .btn + .btn {
+    margin-left: 15px;
+  }
+}
+
+/*-----------------------
+DATOS CONTAINER
+-----------------------*/
+
+.top {
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+.icon {
+  flex: 0 0 auto;
+  z-index: 1000;
+  fill: $grey-dark;
+}
+
+@media (max-width:767px){
+
+  .top {
+    position: relative;
+    border-bottom: 1px solid $grey;
+    height: 131px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .top::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    border-top: 1px solid $grey;
+    border-left: 1px solid $grey;
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    transform: rotate(45deg);
+  }
+  .summary {
+    position: absolute;
+    background-color: $white;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    transform: translateY(-110%);
+    z-index: 50;
+    
+  }
+}
+
+
+.icon {
+  transform: scale(0.1);
+}
+
+
+
+@media (min-width: 768px){
+  .summary{
+    //transform: translateY(0);
+    position: relative;
+  }
+}
+@media (min-width: 768px) {
+/*   .summary {
+    position: relative;
+    background-color: #f8f8f8;
+    height: 100%;
+  } */
+  .icon {
+    position: relative;
+    top: 0;
+    transform: scale(0.24) translateY(90px);
+  }
+}
+
+/*Datos
+-----------------------*/
+
+@media (max-width: 767px) {
+  .container-data {
+    padding: 30px 20px;
+  }
+  .container-data__header {
+    display: block;
+    padding: 20px 0;
+    font-size: $font-size-md;
+    font-weight: bold;
+  }
+
+  .container-data__address {
+    margin-bottom: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-data {
+    position: absolute;
+    top: 0;
+    right: 68px;
+    padding-top: 117px;
+    width: 460px;
+  }
+  .container-data__address {
+    height: 288px;
+    background-color: #fff;
+    box-shadow: 4px 4px 24px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px #e0e0e0;
+  }
+}
+
+.container-data__address span {
+  font-size: 18px;
+  display: block;
+  padding: 5px 0;
+}
+
+/*-----------------------
+ANIMACION ENTRADA-SALIDA
+-------------------*/
+
+.show {
+  animation: mostrar 200ms linear;
+  animation-fill-mode: forwards;
+}
+
+.hide {
+  animation: ocultar 200ms linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mostrar {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes ocultar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-110%);
+  }
+}
