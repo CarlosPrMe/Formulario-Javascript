@@ -62,7 +62,15 @@ BOTONES
 .btn--sm {
   @include button;
   width: 76px;
+  height: 32px;
   font-size: $font-size-sm;
+}
+
+@media (min-width:768px){
+  .btn--sm {
+    @include button;
+    display: none;
+  }
 }
 
 /*------------------------
@@ -112,9 +120,6 @@ FORMULARIO
 
   .buttons {
     grid-column-start: 2;
-  }
-  .btn {
-    width: 120px;
   }
 
   .btn + .btn {
@@ -173,49 +178,55 @@ DATOS CONTAINER
   }
 }
 
-
 .icon {
   transform: scale(0.1);
 }
 
-
-
 @media (min-width: 768px){
   .summary{
-    //transform: translateY(0);
     position: relative;
+  }
+
+  .top{
+    padding-bottom: 144px;
   }
 }
 @media (min-width: 768px) {
-/*   .summary {
-    position: relative;
-    background-color: #f8f8f8;
-    height: 100%;
-  } */
   .icon {
-    position: relative;
-    top: 0;
-    transform: scale(0.24) translateY(90px);
+    transform: scale(0.24) translate(-320px,-160px);
   }
 }
 
 /*Datos
 -----------------------*/
 
+
+.container-data__address span {
+  display: block;
+}
+
 @media (max-width: 767px) {
   .container-data {
     padding: 30px 20px;
-  }
-  .container-data__header {
-    display: block;
-    padding: 20px 0;
-    font-size: $font-size-md;
-    font-weight: bold;
   }
 
   .container-data__address {
     margin-bottom: 25px;
   }
+
+  .container-data__address span {
+    font-size: 18px;
+    line-height: 1.67;
+    &:first-of-type{
+      padding: 20px 0;
+      font-size: $font-size-md;
+      font-weight: bold;
+    }
+    &:last-of-type{
+      margin-bottom: 30px;
+    }
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -226,19 +237,47 @@ DATOS CONTAINER
     padding-top: 117px;
     width: 460px;
   }
+
+  .container-data__address span{
+    line-height: 1.5;
+    &:first-of-type{
+      font-weight: 700;
+      padding-bottom: 16px;
+    }
+    &:last-of-type{
+      margin-bottom: 30px;
+    }
+  }
+  .container-data__address span + span{
+    font-size: 20px;
+  }
+
+  .container-data__header{
+    font-size: 24px;
+  }
   .container-data__address {
+    padding-left: 60px;
     height: 288px;
     background-color: #fff;
     box-shadow: 4px 4px 24px 0 rgba(0, 0, 0, 0.1);
     border: solid 1px #e0e0e0;
   }
+
+  .container-data__address::before{
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 40px;
+    left: -80px;
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    width: 38px;
+    height: 38px;
+    background-color: $white;
+    transform: perspective(400px) rotateX(45deg) rotateZ(45deg);
+  }
 }
 
-.container-data__address span {
-  font-size: 18px;
-  display: block;
-  padding: 5px 0;
-}
 
 /*-----------------------
 ANIMACION ENTRADA-SALIDA

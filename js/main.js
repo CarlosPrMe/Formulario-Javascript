@@ -1,9 +1,6 @@
 window.addEventListener('load', function () {
     console.log('Cargado');
 
-
-
-
     document.getElementsByClassName('form')[0].addEventListener('submit', function (e) {
         e.preventDefault();
         let mediaquery = window.matchMedia('(max-width:767px)');
@@ -15,17 +12,16 @@ window.addEventListener('load', function () {
         let ciudad = document.getElementsByClassName('form__control')[5].value;
         console.log('click', nombre);
         document.getElementsByClassName('container-data__header')[0].innerText = `${nombre} ${apellidos}`;
-        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[0].innerText = `Tel: ${telefono}`;
-        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[1].innerText = `${direccion}`;
-        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[2].innerText = `${postal} ${ciudad}`;
+        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[1].innerText = `Tel: ${telefono}`;
+        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[2].innerText = `${direccion}`;
+        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[3].innerText = `${postal} ${ciudad}`;
 
         if (mediaquery.matches) {
             document.getElementsByClassName('summary')[0].classList.add('show');
             document.getElementsByClassName('summary')[0].classList.remove('hide');
-
         }
 
-
+        document.getElementsByClassName('btn--sm')[0].style.display='inline-block';
 
     })
 
@@ -34,14 +30,14 @@ window.addEventListener('load', function () {
         if (mediaquery.matches) {
             document.getElementsByClassName('summary')[0].classList.remove('show');
             document.getElementsByClassName('summary')[0].classList.add('hide');
-
         }
-
-
         document.getElementsByClassName('container-data__header')[0].innerText = '';
-        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[0].innerText = '';
         document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[1].innerText = '';
         document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[2].innerText = '';
+        document.getElementsByClassName('container-data__address')[0].getElementsByTagName('span')[3].innerText = '';
+    })
 
+    document.getElementsByClassName('btn--sm')[0].addEventListener('click', function(){
+        this.style.display='none';
     })
 })
